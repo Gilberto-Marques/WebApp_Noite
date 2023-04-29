@@ -1,4 +1,6 @@
-﻿<div class="row">
+﻿@model WebApp_Noite.Models.ClientesModel
+
+<div class="row">
     <div class="col-4">
         COLUNA DA ESQUERDA
     </div>
@@ -16,21 +18,24 @@
 
             </div>
             <div class="card-body">
-                <form action="/Cliente/Salvar" method="post">
+                <form action="/Cliente/SalvarDados" method="post">
+                    <!--
                     <label>Código</label>
-                    <input type="number" name="codigo" class="form-control" />
+                    <input type="number" name="Id" class="form-control" />
                     <br />
 
+                    -->
+
                     <label>Nome</label>
-                    <input type="text" name="nome" class="form-control" />
+                    <input type="text" name="Nome" class="form-control" />
                     <br />
 
                     <label>Endereço</label>
-                    <input type="text" name="endereco" class="form-control" />
+                    <input type="text" name="Endereco" class="form-control" />
                     <br />
 
                     <label>Telefone</label>
-                    <input type="text" name="telefone" class="form-control" />
+                    <input type="text" name="Telefone" class="form-control" />
                     <br />
 
                     <button type="submit" class="btn btn-info">
