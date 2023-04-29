@@ -53,10 +53,12 @@
                                 <td>@cliente.Telefone</td>
                                 <td>@cliente.Endereco</td>
                                 <td>
-                                    <a href="/Cliente/Editar/2" class="btn btn-warning">
+                                    <a href="/Cliente/Editar/@cliente.Id"
+                                       class="btn btn-warning">
                                         Editar
                                     </a>
-                                    <a href="/Cliente/Excluir/2" class="btn btn-danger">
+                                    <a href="/Cliente/Excluir/@cliente.Id"
+                                       class="btn btn-danger">
                                         Excluir
                                     </a>
                                 </td>
