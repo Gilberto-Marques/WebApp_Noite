@@ -29,6 +29,11 @@ namespace WebApp_Noite.Controllers
                 cliente.Id = rand.Next(1, 9999);
                 db.Add(cliente);
             }
+            else
+            {
+                int indice = db.FindIndex(a => a.Id == cliente.Id);
+                db[indice] = cliente;
+            }
             return RedirectToAction("Lista");
         }
 
@@ -44,7 +49,7 @@ namespace WebApp_Noite.Controllers
 
         public IActionResult Editar(int id)
         {
-            ClientesModel item = db.Find(a => a.Id == id);
+            ClientesModel item = db.Find(cliente => cliente.Id == id);
             if(item != null)
             {
                 return View(item);
@@ -54,7 +59,6 @@ namespace WebApp_Noite.Controllers
                 return RedirectToAction("Lista");
             }
         }
-
 
     }
 }

@@ -2,6 +2,7 @@
 <div class="row">
 
     <div class="col-12">
+
         <div class="card">
             <div class="card-header">
                 <h2>Lista de Clientes</h2>
@@ -19,7 +20,7 @@
                             <option value="0">Todas Opções</option>
                             <option value="id">Por Código</option>
                             <option value="nome">Por Nome</option>
-                            <option value="qtd">Por Quantidade</option>
+                            <option value="qtd">Por Telefone</option>
                         </select>
                     </div>
                     <div class="col-4">
@@ -30,28 +31,33 @@
                             Pesquisar
                         </button>
                     </div>
+
                 </div>
 
-                <form action="Cliente/Pesquisa" method="get">
+                <form action="/Cliente/Pesquisa" method="get">
                 </form>
 
+
+
                 <table class="table table-striped">
+
                     <thead>
                         <tr>
                             <th>Código</th>
                             <th>Nome</th>
-                            <th>Endereço</th>
                             <th>Telefone</th>
+                            <th></th>
                         </tr>
                     </thead>
+
                     <tbody>
-                        @foreach(var cliente in Model)
+                        @foreach (var cliente in Model)
                         {
+
                             <tr>
-                                <td>@cliente.Id</td>
-                                <td>@cliente.Nome</td>
-                                <td>@cliente.Telefone</td>
-                                <td>@cliente.Endereco</td>
+                                <td> @cliente.Id </td>
+                                <td> @cliente.Nome </td>
+                                <td> @cliente.Telefone </td>
                                 <td>
                                     <a href="/Cliente/Editar/@cliente.Id"
                                        class="btn btn-warning">
@@ -61,16 +67,17 @@
                                        class="btn btn-danger">
                                         Excluir
                                     </a>
-                                </td>
 
+                                </td>
                             </tr>
                         }
-
-                        
                     </tbody>
                 </table>
+
             </div>
+
         </div>
+
     </div>
 
 </div>
