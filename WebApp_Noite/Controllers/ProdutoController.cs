@@ -5,16 +5,19 @@ namespace WebApp_Noite.Controllers
 {
     public class ProdutoController : Controller
     {
+        public static List<ProdutoModel> db_produto = new List<ProdutoModel>();
+
         public IActionResult Lista()
         {
-            return View();
+            return View(db_produto);
         }
 
         public IActionResult Cadastrar()
         {
-            return View();
-            //return view retorna a tela ao usuário, nesse caso, a tela cadastrar
+            ProdutoModel model = new ProdutoModel();
+            return View(model);
         }
+
         public IActionResult SalvarDados(ProdutoModel produto)
         {
             if (produto.Id == 0)

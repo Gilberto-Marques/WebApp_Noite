@@ -22,7 +22,8 @@ namespace WebApp_Noite.Controllers
         {
             return View();
         }
-        
+
+        // /Home/Login
         public IActionResult Login()
         {
             return View();

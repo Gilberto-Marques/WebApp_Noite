@@ -1,95 +1,85 @@
-﻿<div class="row">
+﻿@model List<WebApp_Noite.Models.ProdutoModel>
+    <div class="row">
 
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h2>Lista de Produtos</h2>
-            </div>
-            <div class="card-body">
 
-                <div class="row">
-                    <div class="col-2">
-                        <a href="/Produto/Cadastrar" class="btn btn-success">
-                            Novo Produto
-                        </a>
+        <div class="col-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <h2>Lista de Produtos</h2>
+                </div>
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-2">
+                            <a href="/Produto/Cadastrar" class="btn btn-success">
+                                Novo Produto
+                            </a>
+                        </div>
+                        <div class="col-4">
+                            <select name="filtro" class="form-control">
+                                <option value="0">Todas Opções</option>
+                                <option value="id">Por Código</option>
+                                <option value="nome">Por Nome</option>
+                                <option value="qtd">Por Qtd</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <input type="text" name="busca" class="form-control" />
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-primary">
+                                Pesquisar
+                            </button>
+                        </div>
+
                     </div>
-                    <div class="col-4">
-                        <select name="filtro" class="form-control">
-                            <option value="0">Todas Opções</option>
-                            <option value="id">Por Código</option>
-                            <option value="nome">Por Nome</option>
-                            <option value="qtd">Por Quantidade</option>
-                        </select>
-                    </div>
-                    <div class="col-4">
-                        <input type="text" name="busca" class="form-control" />
-                    </div>
-                    <div class="col-2">
-                        <button class="btn btn-primary">
-                            Pesquisar
-                        </button>
-                    </div>
+
+                    <form action="/Produto/Pesquisa" method="get">
+                    </form>
+
+
+
+                    <table class="table table-striped">
+
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Nome</th>
+                                <th>Qtd em Estoque</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach(var produto in Model){
+
+
+                            <tr>
+                                <td>@produto.Id</td>
+                                <td>@produto.Nome</td>
+                                <td>@produto.QtdEstoque</td>
+                                <td>
+                                    <a href="/Produto/Editar/@produto.Id"
+                                       class="btn btn-warning">
+                                        Editar
+                                    </a>
+                                    <a href="/Produto/Excluir/@produto.Id"
+                                       class="btn btn-danger">
+                                        Excluir
+                                    </a>
+
+                                </td>
+                            </tr>
+                        }
+
+                        </tbody>
+                    </table>
+
                 </div>
 
-                <form action="Produto/Pesquisa" method="get">
-
-                </form>
-
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Código</th>
-                            <th>Nome</th>
-                            <th>Qtd em Estoque</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Mouse Gamer</td>
-                            <td>150</td>
-                            <td>
-                                <a href="/Produto/Editar/1" class="btn btn-warning">
-                                    Editar   
-                                </a>
-                                <a href="/Produto/Excluir/1" class="btn btn-danger">
-                                    Excluir
-                                </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>2</td>
-                            <td>Berbie Unicornio Feliz</td>
-                            <td>10</td>
-                            <td>
-                                <a href="/Produto/Editar/2" class="btn btn-warning">
-                                    Editar
-                                </a>
-                                <a href="/Produto/Excluir/2" class="btn btn-danger">
-                                    Excluir
-                                </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>3</td>
-                            <td>Cerveja Glacial</td>
-                            <td>38</td>
-                            <td>
-                                <a href="/Produto/Editar/3" class="btn btn-warning">
-                                    Editar
-                                </a>
-                                <a href="/Produto/Excluir/3" class="btn btn-danger">
-                                    Excluir
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
-        </div>
-    </div>
 
-</div>
+        </div>
+
+    </div>
