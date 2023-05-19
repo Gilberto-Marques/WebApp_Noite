@@ -7,9 +7,40 @@ namespace WebApp_Noite.Controllers
     {
         public static List<ProdutoModel> db_produto = new List<ProdutoModel>();
 
-        public IActionResult Lista()
+        public IActionResult Lista(string filtro, string busca)
         {
-            return View(db_produto);
+            if (string.IsNullOrEmpty(busca))
+            {
+                return View(db_produto);
+
+            }
+            else
+            {
+                switch (filtro)
+                {
+                    case "id":
+                        return View(db_produto.Where(a => a.Id.ToString() == busca).ToList());
+                        break;
+
+                    case "nome":
+                        return View(db_produto.Where(a => a.Nome.Contains (busca)).ToList());
+                        break;
+
+                    case "qtd":
+                        return View(db_produto.Where(a => a.QtdEstoque.ToString() == busca).ToList());
+                        break;
+
+                    default:
+                        return View(
+                        db_produto.Where(a => a.Id.ToString() == busca
+                        ||
+                        a.Nome.Contains(busca)
+                        ||
+                        a.QtdEstoque.ToString() == busca)
+                        );
+                        break;
+                }
+            }
         }
 
         public IActionResult Cadastrar()
